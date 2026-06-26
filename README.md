@@ -24,7 +24,7 @@ git remote -v
 ```
 
 ```
-origin = 내 저장소 (내 GitHub 원격 저장소)
+origin = 내 저장소 (내 GitHub 원격 저장소)<br>
 upstream = 원본 저장소 (타인의 저장소)
 ```
 
