@@ -42,8 +42,50 @@ Git Repository 구성 → .gitlab-ci.yml 작성 → Pipeline Stage 구성 → Bu
 
 
 # Ansible 자동화 구성
-(Ansible 구성 이미지)
-
+```text
+ansible-infra/
+│
+├── ansible.cfg
+│
+├── playbooks/
+│   ├── deploy.yml
+│   ├── init-server.yml
+│   ├── k8s-master-init.yml
+│   ├── k8s-worker-join.yml
+│   ├── kubernetes-install.yml
+│   └── site.yml
+│
+└── roles/
+    │
+    ├── database/
+    │   └── tasks/
+    │       ├── main.yml
+    │       ├── postgres.yml
+    │       ├── redis.yml
+    │       └── kafka.yml
+    │
+    ├── docker/
+    │   └── tasks/
+    │       └── main.yml
+    │
+    ├── harbor/
+    │   └── tasks/
+    │       └── main.yml
+    │
+    └── kubernetes/
+        │
+        ├── handlers/
+        │   └── main.yml
+        │
+        ├── tasks/
+        │   ├── main.yml
+        │   ├── install.yml
+        │   ├── master.yml
+        │   └── worker.yml
+        │
+        └── templates/
+            └── kubeadm-config.yaml.j2
+```
 
 # CI/CD Pipeline
 (GitLab Pipeline 이미지)
