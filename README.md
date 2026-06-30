@@ -237,7 +237,25 @@ d
 ```
 
 # CI/CD Pipeline
-(GitLab Pipeline 이미지)
+
+## GitLab CI/CD 동작 과정
+
+```
+
+GitLab CI/CD Pipeline을 통해 코드 변경 사항을 감지하고 자동으로 빌드 및 배포 과정을 수행합니다.
+
+GitLab Repository에 코드 Push
+        ↓
+GitLab CI Pipeline 실행
+        ↓
+Docker Image Build
+        ↓
+Harbor Private Registry Push
+        ↓
+Kubernetes Cluster에 Image 배포
+        ↓
+kubectl 명령으로 Pod 업데이트
+```
 
 
 # 서비스 구성
