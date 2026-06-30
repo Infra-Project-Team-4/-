@@ -93,6 +93,7 @@ ansible-infra/
         ├── Worker Node Join
         └── Cluster 환경 구축
 ```
+
 **site.yml 코드 예시**
 ```
 전체 인프라 구축의 실행 진입점으로, 서버 환경에 필요한 Role을 순서대로 호출하여
@@ -125,6 +126,23 @@ DB는 사전에 구성해서 제외합니다.
 <br>
 
 **roles 코드 예시**
+```
+# roles/kubernetes/tasks/main.yml
+
+---
+# Kubernetes 설치 작업 실행
+- import_tasks: install.yml
+
+
+# Master Node 설정
+- import_tasks: master.yml
+  when: inventory_hostname in groups['k8s-master']
+
+
+# Worker Node 설정
+- import_tasks: worker.yml
+  when: inventory_hostname in groups['k8s-worker']
+```
 
 <br>
 
