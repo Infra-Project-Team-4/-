@@ -232,6 +232,13 @@ Database Role은 서비스별 Task를 분리하여 PostgreSQL, Redis, Kafka 환�
 
 **playbook 코드 예시**
 
+```
+
+```
+<br>
+
+**inbentory 코드 예시**
+
 # CI/CD Pipeline
 (GitLab Pipeline 이미지)
 
