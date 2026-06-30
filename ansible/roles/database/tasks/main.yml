@@ -1,0 +1,9 @@
+---
+- name: Install PostgreSQL
+  import_tasks: postgres.yml
+
+- name: Install Redis
+  import_tasks: redis.yml
+
+- name: Install Kafka
+  import_tasks: kafka.yml

@@ -1,0 +1,26 @@
+---
+- name: Install Java
+  apt:
+    name:
+      - openjdk-17-jdk
+    state: present
+    update_cache: yes
+
+
+- name: Create kafka directory
+  file:
+    path: /opt/kafka
+    state: directory
+
+
+- name: Download Kafka
+  get_url:
+    url: https://downloads.apache.org/kafka/3.7.0/kafka_2.13-3.7.0.tgz
+    dest: /tmp/kafka.tgz
+
+
+- name: Extract Kafka
+  unarchive:
+    src: /tmp/kafka.tgz
+    dest: /opt/kafka
+    remote_src: yes
