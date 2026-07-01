@@ -1,6 +1,11 @@
 ---
 - name: Server Init
-  hosts: all
+  hosts:
+  - management
+  - harbor
+  - k8s_master
+  - k8s_worker
+  - database
   become: yes
   roles:
     - docker

@@ -19,3 +19,25 @@
   copy:
     src: ../../../../harbor/harbor.yml
     dest: /opt/harbor/harbor.yml
+
+- name: Download Harbor installer
+  get_url:
+    url: https://github.com/goharbor/harbor/releases/download/v2.10.0/harbor-online-installer-v2.10.0.tgz
+    dest: /tmp/harbor.tgz
+
+- name: Extract Harbor
+  unarchive:
+    src: /tmp/harbor.tgz
+    dest: /opt
+    remote_src: yes
+
+- name: Install Harbor
+  shell: ./install.sh
+  args:
+    chdir: /opt/harbor
+    creates: /opt/harbor/docker-compose.yml
+
+- name: Restart Harbor
+  shell: docker compose up -d
+  args:
+    chdir: /opt/harbor

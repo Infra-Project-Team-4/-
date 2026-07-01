@@ -20,9 +20,12 @@
     path: /etc/postgresql/*/main/postgresql.conf
     regexp: '^#?listen_addresses'
     line: "listen_addresses = '*'"
+  notify:
+    - Restart PostgreSQL
 
-
-- name: Restart PostgreSQL
-  systemd:
-    name: postgresql
-    state: restarted
+- name: Allow PostgreSQL authentication
+  lineinfile:
+    path: /etc/postgresql/*/main/pg_hba.conf
+    line: "host all all 0.0.0.0/0 md5"
+  notify:
+    - Restart PostgreSQL

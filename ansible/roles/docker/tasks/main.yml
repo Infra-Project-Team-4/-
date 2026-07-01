@@ -1,15 +1,44 @@
 ---
-- name: install docker
-
+- name: Install docker and containerd
   apt:
     name:
       - docker.io
+      - containerd
     state: present
+    update_cache: yes
 
 
-- name: docker start
+- name: Create docker config directory
+  file:
+    path: /etc/docker
+    state: directory
+    mode: '0755'
 
+
+- name: Configure docker daemon
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    mode: '0644'
+  notify: restart docker
+
+
+- name: Add ansible user to docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+
+
+- name: Enable docker service
   service:
     name: docker
+    state: started
+    enabled: yes
+
+
+- name: Enable containerd service
+  service:
+    name: containerd
     state: started
     enabled: yes

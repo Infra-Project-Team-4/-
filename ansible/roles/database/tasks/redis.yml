@@ -20,7 +20,10 @@
     line: 'bind 0.0.0.0'
 
 
-- name: Restart Redis
-  systemd:
-    name: redis-server
-    state: restarted
+- name: Configure Redis bind
+  lineinfile:
+    path: /etc/redis/redis.conf
+    regexp: '^bind'
+    line: 'bind 0.0.0.0'
+  notify:
+    - Restart Redis

@@ -24,3 +24,28 @@
     src: /tmp/kafka.tgz
     dest: /opt/kafka
     remote_src: yes
+
+- name: Create Kafka service
+  copy:
+    dest: /etc/systemd/system/kafka.service
+    content: |
+      [Unit]
+      Description=Kafka Server
+      After=network.target
+
+      [Service]
+      User=root
+      ExecStart=/opt/kafka/kafka_2.13-3.7.0/bin/kafka-server-start.sh /opt/kafka/kafka_2.13-3.7.0/config/server.properties
+      ExecStop=/opt/kafka/kafka_2.13-3.7.0/bin/kafka-server-stop.sh
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+  notify:
+    - Restart Kafka
+
+- name: Enable Kafka
+  systemd:
+    name: kafka
+    enabled: yes
+    state: started
