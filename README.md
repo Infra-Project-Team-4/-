@@ -40,8 +40,8 @@ Role 구성 → Inventory 작성 → 변수 설정 → Playbook 작성 → site.
 ```
 
 깃랩 CI/CD 파이프라인 구축
-<br>
 
+[Gitlab 작업 기록](https://www.notion.so/Ansible-390a48359dbb80f78483d187e0ede9c0?source=copy_link)
 ```
 Git Repository 구성 → .gitlab-ci.yml 작성 → Pipeline Stage 구성 → Build → Test →Docker Image Build
 → Harbor Push → Kubernetes Deploy → Pod Rolling Update
