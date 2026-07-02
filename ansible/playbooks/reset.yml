@@ -1,6 +1,6 @@
 ---
-# 실행: ansible-playbook -i inventory/hosts.ini reset.yml
-# 마스터/워커의 쿠버네티스 설정을 완전히 초기화합니다. (Harbor는 건드리지 않음)
+# ansible-playbook -i inventory/hosts.ini reset.yml
+# 마스터/워커 쿠버네티스 설정 초기화
 
 - name: K8s 클러스터 초기화
   hosts: k8s_cluster
