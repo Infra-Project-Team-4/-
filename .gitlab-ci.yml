@@ -1,11 +1,33 @@
 stages:
   - test
+  - build
 
-test-job:
+variables:
+  IMAGE_NAME: test-app
+  TAG: $CI_COMMIT_SHORT_SHA
+
+# 1. CI 정상 확인용
+test:
   stage: test
   tags:
     - docker
   script:
-    - echo "CI/CD RUNNING SUCCESS"
-    - hostname
+    - echo "CI PIPELINE WORKING"
+    - echo "Runner OK"
+    - uname -a
+    - echo "Network independent mode"
 
+# 2. 가짜 build (외부 없음)
+build:
+  stage: build
+  tags:
+    - docker
+  script:
+    - echo "BUILD STAGE START"
+    - echo "No Docker build yet (network not ready)"
+    - echo "Simulating build process"
+    - mkdir -p dist
+    - echo "dummy artifact" > dist/app.txt
+  artifacts:
+    paths:
+      - dist/
