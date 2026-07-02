@@ -10,8 +10,7 @@ kubernetes_version: "1.29.0-1.1"
 kubernetes_apt_version: "v1.29"
 
 # Calico CNI 
-# 주의: 192.168.0.0/16은 실제 호스트 네트워크(192.168.159.0/24)와 겹치므로
-# 반드시 호스트 대역과 겹치지 않는 10.244.0.0/16 사용
+# 호스트 대역과 겹치지 않는 10.244.0.0/16 사용
 pod_network_cidr: "10.244.0.0/16"
 calico_manifest_url: "https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/calico.yaml"
 
