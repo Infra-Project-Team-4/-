@@ -79,39 +79,31 @@ Ansible은 Playbook을 실행하여 여러 Role을 순차적으로 호출하고,
 
 
 ```
-├── ansible.cfg
-├── group_vars
-│   └── all.yml
-├── inventory
-│   └── hosts.ini
+ansible-infra/
+├── ansible.cfg                
+├── inventory/                 
+│   └── hosts.ini
+├── group_vars/               
+│   └── all.yml
+│
 ├── playbooks
-│   ├── deploy.yml
-│   ├── gitlab-install.yml
-│   ├── init-server.yml
-│   ├── k8s-master-init.yml
-│   ├── k8s-worker-join.yml
-│   ├── kubernetes-install.yml
-│   ├── reset.yml
-│   └── site.yml
-└── roles
-    ├── common
-    │       └── main.yml
-    ├── database
-    │       ├── kafka.yml
-    │       ├── main.yml
-    │       ├── postgres.yml
-    │       └── redis.yml
-    ├── gitlab  
-    │  └── main.yml
-    ├── gitlab-runner
-    │   └── main.yml
-    ├── harbor
-    │       └── main.yml
-    │       └── harbor.yml.j2
-    ├── k8s-master
-    │       └── main.yml
-    └── k8s-worker
-            └── main.yml
+│   ├── deploy.yml
+│   ├── gitlab-install.yml
+│   ├── init-server.yml
+│   ├── k8s-master-init.yml
+│   ├── k8s-worker-join.yml
+│   ├── kubernetes-install.yml
+│   ├── reset.yml
+│   └── site.yml           
+│
+└── roles/                     
+    ├── common/                
+    ├── database/              
+    ├── harbor/                
+    ├── k8s-master/            
+    └── k8s-worker/
+    ├── gitlab / 
+    └── gitlab-runner/
 
 ```
 ---
